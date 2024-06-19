@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #008080;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #008080;
+            margin-bottom: 10px;
+        }
+
+        .input-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            max-width: 400px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            color: #333;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #008080;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #downloadLink {
+            display: block;
+            margin-top: 10px;
+            color: #008080;
+            text-decoration: none;
+        }
+
+        #downloadLink:hover {
+            text-decoration: underline;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #008080;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sentiment Analysis</h1>
+
+    <!-- Text Input Container -->
+    <div class="input-container" id="text_input_container">
+        <h2>Text Input</h2>
+        <form action="/analyze_input1" method="post">
+            <label for="input_text">Enter text:</label>
+            <input type="text" name="input_text" id="input_text" placeholder="Enter text" required>
+            <button type="submit">Analyze Text</button>
+        </form>
+    </div>
+
+    <!-- Audio Input Container -->
+    <div class="input-container" id="audio_input_container">
+        <h2>Audio Input</h2>
+        <form action="/analyze_input2" method="post" enctype="multipart/form-data">
+            <label for="audio_file">Upload audio file:</label>
+            <input type="file" name="audio_file" accept="audio/*" id="audio_file">
+            <button type="submit">Analyze Audio</button>
+        </form>
+    </div>
+
+   <!-- Recording Controls Container -->
+<div class="input-container" id="recording_controls_container">
+    <h2>Live Audio Recording</h2>
+    <form id="startForm" action="/start" onsubmit="startRecording()">
+        <button type="submit" id="startRecord">Start Recording</button>
+    </form>
+    <form id="stopForm" action="/stop" onsubmit="stopRecording()">
+        <button type="submit" id="stopRecord">Stop Recording</button>
+    </form>
+    <form action="/analyse_live">
+        <button type="submit">Analyse</button>
+    </form>
+</div>
+
+    <div id="result"></div>
+
+
+    <script>
+    function startRecording() {
+        alert("Please Start Talking. Our System is Recording.");
+    }
+
+    function stopRecording() {
+        alert("We have Stopped and saved your recording in the 'uploads' folder.");
+    }
+</script>
+
+</body>
+</html>
